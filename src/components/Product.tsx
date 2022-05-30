@@ -6,7 +6,7 @@ import Rating from "./Rating";
 
 interface AppProps {
   product: {
-    _id: string;
+    _id: number;
     name: string;
     image: string;
     description: string;
@@ -14,7 +14,7 @@ interface AppProps {
     price: number;
     countInStock: number;
     rating: number;
-    numReviews: number;
+    numOfReviews: number;
   };
 }
 
@@ -33,7 +33,7 @@ const Product = ({ product }: AppProps) => {
         <Card.Text as="div">
           <Rating
             value={product.rating}
-            text={` ${product.numReviews} reviews`}
+            text={` ${product.numOfReviews} reviews`}
           />
         </Card.Text>
         <Card.Text as="h3">${product.price}</Card.Text>
