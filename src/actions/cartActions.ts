@@ -2,11 +2,8 @@ import axios from "axios";
 import { Dispatch } from "react";
 import { CART_ADD_ITEM } from "../constants/cartConstants";
 
-import { RootState } from "../store";
-
 export const addToCart =
-  (id: string, quantity: string) =>
-  async (dispatch: Dispatch<any>, getState: () => RootState) => {
+  (id: string, quantity: number) => async (dispatch: Dispatch<any>) => {
     const { data } = await axios.get(`/products/${id}`);
 
     dispatch({
