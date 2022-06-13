@@ -10,12 +10,12 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { listProductDetails } from "../actions/productActions";
 
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Rating from "../components/Rating";
 import { useAppDispatch, useAppSelector } from "../hooks";
+import { listProductDetails } from "../actions/productActions";
 
 const ProductScreen = () => {
   const [quantity, setQuantity] = useState(0);
