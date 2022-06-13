@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Dispatch } from "react";
-import { CART_ADD_ITEM } from "../constants/cartConstants";
+import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
 
 export const addToCart =
   (id: string, quantity: number) => async (dispatch: Dispatch<any>) => {
@@ -18,3 +18,10 @@ export const addToCart =
       },
     });
   };
+
+export const removeFromCart = (id: number) => (dispatch: Dispatch<any>) => {
+  dispatch({
+    type: CART_REMOVE_ITEM,
+    payload: id,
+  });
+};

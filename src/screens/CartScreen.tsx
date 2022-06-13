@@ -11,7 +11,7 @@ import {
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
 import Message from "../components/Message";
-import { addToCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 import { useAppDispatch, useAppSelector } from "../hooks";
 
 interface IItem {
@@ -41,7 +41,7 @@ const CartScreen = () => {
   }, [dispatch, productId, quantity]);
 
   const removeFromCartHandler = (id: number) => {
-    console.log("remove");
+    dispatch(removeFromCart(id));
   };
 
   const checkoutHandler = () => {
