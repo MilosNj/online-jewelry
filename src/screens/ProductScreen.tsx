@@ -8,8 +8,7 @@ import {
   ListGroup,
   Row,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -18,19 +17,20 @@ import { useAppDispatch, useAppSelector } from "../hooks";
 import { listProductDetails } from "../actions/productActions";
 
 const ProductScreen = () => {
-  const [quantity, setQuantity] = useState(0);
-
+  const [quantity, setQuantity] = useState(1);
   const params = useParams();
-
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
-
   const productDetails: any = useAppSelector((state) => state.productDetails);
-
   const { loading, error, product } = productDetails;
 
   useEffect(() => {
     dispatch(listProductDetails(params.id));
   }, [dispatch, params.id]);
+
+  const addToCartHandler = () => {
+    navigate(`/cart/${params.id}?qty=${quantity}`);
+  };
 
   return (
     <>
@@ -109,7 +109,11 @@ const ProductScreen = () => {
                   </ListGroup.Item>
                 )}
                 <ListGroup.Item className="d-grid gap-2">
-                  <Button type="button" disabled={product?.countInStock === 0}>
+                  <Button
+                    type="button"
+                    disabled={product?.countInStock === 0}
+                    onClick={addToCartHandler}
+                  >
                     Add To Cart
                   </Button>
                 </ListGroup.Item>
