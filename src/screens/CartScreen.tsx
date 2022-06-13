@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { Col, ListGroup, Row } from "react-bootstrap";
+import { Link, useLocation, useParams } from "react-router-dom";
+
+import Message from "../components/Message";
 import { addToCart } from "../actions/cartActions";
 import { useAppDispatch, useAppSelector } from "../hooks";
 
@@ -19,7 +22,24 @@ const CartScreen = () => {
     }
   }, [dispatch, productId, quantity]);
 
-  return <div>CartScreen</div>;
+  return (
+    <Row>
+      <Col md={8}>
+        <h1>Shopping Cart</h1>
+        {cartItems.length === 0 ? (
+          <Message>
+            <>
+              Your cart is empty. <Link to="/">Go back</Link>
+            </>
+          </Message>
+        ) : (
+          <ListGroup variant="flush"></ListGroup>
+        )}
+      </Col>
+      <Col md={2}></Col>
+      <Col md={2}></Col>
+    </Row>
+  );
 };
 
 export default CartScreen;
