@@ -3,7 +3,7 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { CART_ADD_ITEM } from "../constants/cartConstants";
 
 export const cartReducer = (
-  state = { cartItems: [] },
+  state = { cartItems: [] as any[] },
   action: PayloadAction
 ) => {
   switch (action.type) {
