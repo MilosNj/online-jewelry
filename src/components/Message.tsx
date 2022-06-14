@@ -6,8 +6,12 @@ type Props = {
   children: JSX.Element;
 };
 
-const Message = ({ variant = "info", children }: Props) => {
+const Message = ({ variant, children }: Props) => {
   return <Alert variant={variant}>{children}</Alert>;
+};
+
+Message.defaultProps = {
+  variant: "info",
 };
 
 export default Message;
