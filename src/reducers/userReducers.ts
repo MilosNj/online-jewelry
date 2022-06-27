@@ -7,7 +7,14 @@ import {
   USER_LOGOUT,
 } from "../constants/userConstants";
 
-export const userLoginReducer = (state = {}, action: PayloadAction) => {
+export const userLoginReducer = (
+  state = {
+    userInfo: localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo")!)
+      : null,
+  },
+  action: PayloadAction
+) => {
   switch (action.type) {
     case USER_LOGIN_REQUEST:
       return { loading: true };

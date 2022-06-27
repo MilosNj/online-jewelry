@@ -4,7 +4,9 @@ import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
 
 export const cartReducer = (
   state = {
-    cartItems: [] as any[],
+    cartItems: localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems")!)
+      : [],
   },
   action: PayloadAction
 ) => {
@@ -31,7 +33,9 @@ export const cartReducer = (
     case CART_REMOVE_ITEM:
       return {
         ...state,
-        cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+        cartItems: state.cartItems.filter(
+          (x: any) => x.product !== action.payload
+        ),
       };
     default:
       return state;
