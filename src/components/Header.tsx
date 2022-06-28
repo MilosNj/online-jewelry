@@ -1,13 +1,17 @@
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { useAppSelector } from "../hooks";
+
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { logout } from "../actions/userActions";
 
 const Header = () => {
+  const dispatch = useAppDispatch();
+
   const userLogin: any = useAppSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   const logoutHandler = () => {
-    console.log("logout");
+    dispatch(logout());
   };
 
   return (
