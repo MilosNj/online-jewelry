@@ -21,7 +21,7 @@ export const login =
       };
 
       const { data } = await axios.post(
-        "/users/login",
+        "/users/signin",
         { email, password },
         config
       );
